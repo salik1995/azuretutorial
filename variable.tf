@@ -18,3 +18,8 @@ variable "prefix" {
   type=string
   default="the_class_is_going"
 }
+
+variable "storage" {
+  type=string
+  default="the_new_class"
+}
