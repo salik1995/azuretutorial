@@ -4,7 +4,7 @@ resource "azurerm_resource_group" "tutorial" {
 }
 
 resource "azurerm_storage_account" "awp" {
-  name                     = "${var.prefix}storageaccountname"
+  name                     = "${var.prefix}storageaccountname${var.env}"
   resource_group_name      = azurerm_resource_group.tutorial.name
   location                 = azurerm_resource_group.tutorial.location
   account_tier             = "Standard"
