@@ -16,5 +16,5 @@ variable "tenant_id" {
 
 variable "prefix" {
   type=string
-  default = "the class is going"
+  default="the_class_is_going"
 }
