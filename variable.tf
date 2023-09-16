@@ -16,7 +16,7 @@ variable "tenant_id" {
 
 variable "prefix" {
   type=string
-  default="the_class_is_going"
+  default="class56"
 }
 
 variable "env" {
