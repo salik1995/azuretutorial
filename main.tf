@@ -13,3 +13,4 @@ resource "azurerm_storage_account" "awp" {
   tags = {
     environment = "staging"
   }
+ }
