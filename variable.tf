@@ -21,10 +21,10 @@ variable "prefix" {
 
 variable "env" {
   type=string
-  default="awp"
+  default="dev"
 }
 
 variable "storage" {
   type=string
-  default="standard"
+  default="Standard"
 }
