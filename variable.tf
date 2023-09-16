@@ -19,7 +19,12 @@ variable "prefix" {
   default="the_class_is_going"
 }
 
+variable "env" {
+  type=string
+  default="awp"
+}
+
 variable "storage" {
   type=string
-  default="the_new_class"
+  default="standard"
 }
