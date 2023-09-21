@@ -14,9 +14,13 @@ resource "azurerm_storage_account" "awp" {
     environment = "staging"
   }
 
+resource "azurerm_storage_container" "security" {
+  name                     = "${var.prefix}storage${var.env}"
+  storage_account_name  = azurerm_storage_account.tutorial.name
+  container_access_type = "private"
+}
 
-
-resource "azurerm_storage_blob" "tutoral" "awp" {
+resource "azurerm_storage_blob" "tutoral" {
   name                     = "${var.prefix}storage${var.env}"
   storage_account_name   = azurerm_storage_account.batch06.name
   storage_container_name = azurerm_storage_container.batch06.name
