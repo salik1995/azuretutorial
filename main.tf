@@ -27,4 +27,16 @@ resource "azurerm_storage_blob" "tutoral" {
   type                   = "Block"
   source                 = "some-local-file.zip"
 }
+
+resource "azurerm_sql_server" "trial" {
+  name                     = "${var.prefix}storage${var.env}"
+  resource_group_name          = azurerm_resource_group.tutorial.name
+  location                     = azurerm_resource_group.tutorial.location
+  version                      = "12.0"
+  administrator_login          = "4dm1n157r470r"
+  administrator_login_password = "4-v3ry-53cr37-p455w0rd"
+
+  tags = {
+    environment = "production"
+  }
  
