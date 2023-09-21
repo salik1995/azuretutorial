@@ -16,7 +16,7 @@ resource "azurerm_storage_account" "awp" {
 
 
 
-resource "azurerm_storage_blob" "tutoral" {
+resource "azurerm_storage_blob" "tutoral" "awp" {
   name                     = "${var.prefix}storage${var.env}"
   storage_account_name   = azurerm_storage_account.batch06.name
   storage_container_name = azurerm_storage_container.batch06.name
