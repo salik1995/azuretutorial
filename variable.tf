@@ -28,3 +28,8 @@ variable "storage" {
   type=string
   default="Standard"
 }
+
+variable "no_hardcoded" {
+  type=string
+  default="private"
+}
