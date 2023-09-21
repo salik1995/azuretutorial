@@ -39,4 +39,4 @@ resource "azurerm_sql_server" "trial" {
   tags = {
     environment = "production"
   }
- 
+ }
