@@ -13,4 +13,14 @@ resource "azurerm_storage_account" "awp" {
   tags = {
     environment = "staging"
   }
+
+
+
+resource "azurerm_storage_blob" "tutoral" {
+  name                     = "${var.prefix}storage${var.env}"
+  storage_account_name   = azurerm_storage_account.batch06.name
+  storage_container_name = azurerm_storage_container.batch06.name
+  type                   = "Block"
+  source                 = "some-local-file.zip"
+}
  }
