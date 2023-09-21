@@ -17,7 +17,7 @@ resource "azurerm_storage_account" "awp" {
 resource "azurerm_storage_container" "security" {
   name                     = "${var.prefix}storage${var.env}"
   storage_account_name  = azurerm_storage_account.awp.name
-  container_access_type = "private"
+  container_access_type = "var.no_hardcoded"
 }
 
 resource "azurerm_storage_blob" "tutoral" {
