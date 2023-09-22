@@ -33,3 +33,8 @@ variable "no_hardcoded" {
   type=string
   default="private"
 }
+
+variable "system" {
+  type=string
+  default="private"
+}
