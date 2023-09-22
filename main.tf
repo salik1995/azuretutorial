@@ -213,6 +213,5 @@ resource "azurerm_application_gateway" "network" {
     capacity = 2
   }
   }
-  }
-  }
+  
 
