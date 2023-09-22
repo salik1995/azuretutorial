@@ -44,20 +44,20 @@ resource "azurerm_kubernetes_cluster" "firstclass" {
   name                = "${var.prefix}storage${var.env}"
   location            = azurerm_resource_group.tutorial.location
   resource_group_name = azurerm_resource_group.tutorial.name
-  dns_prefix          = "exampleaks1"
+  dns_prefix          = var.exampleaks1
 
   default_node_pool {
     name       = "${var.prefix}storage${var.env}"
-    node_count = 1
-    vm_size    = "Standard_D2_v2"
+    node_count = var.number
+    vm_size    = var.Standard_D2_v2
   }
 
   identity {
-    type = "SystemAssigned"
+    type = var.system
   }
 
   tags = {
-    Environment = var.dev
+    Environment = var.env
   }
 }
 
