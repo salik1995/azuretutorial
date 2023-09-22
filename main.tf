@@ -47,7 +47,7 @@ resource "azurerm_kubernetes_cluster" "firstclass" {
   dns_prefix          = var.exampleaks1
 
   default_node_pool {
-    name       = "${var.prefix}storage${var.env}"
+    name       = "${var.prefix}${var.env}"
     node_count = var.numeric
     vm_size    = var.Standard_D2_v2
   }
