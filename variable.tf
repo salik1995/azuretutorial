@@ -36,7 +36,7 @@ variable "no_hardcoded" {
 
 variable "system" {
   type=string
-  default="private"
+  default="SystemAssigned"
 }
 
 variable "numeric" {
