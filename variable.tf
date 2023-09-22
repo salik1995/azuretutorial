@@ -38,3 +38,18 @@ variable "system" {
   type=string
   default="private"
 }
+
+variable "number" {
+  type=number
+  default="private"
+}
+
+variable "Standard_D2_v2" {
+  type=string
+  default="private"
+}
+
+variable "exampleaks1" {
+  type=string
+  default="private"
+}
