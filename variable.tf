@@ -41,7 +41,7 @@ variable "system" {
 
 variable "numeric" {
   type=number
-  default="private"
+  default="Standard"
 }
 
 variable "Standard_D2_v2" {
