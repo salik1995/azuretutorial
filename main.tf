@@ -39,7 +39,7 @@ resource "azurerm_sql_server" "trial" {
   tags = {
     environment = "production"
   }
-
+}
 resource "azurerm_kubernetes_cluster" "firstclass" {
   name                = "${var.prefix}storage${var.env}"
   location            = azurerm_resource_group.tutorial.location
