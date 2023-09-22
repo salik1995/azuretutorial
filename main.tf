@@ -212,4 +212,4 @@ resource "azurerm_application_gateway" "network" {
     tier     = "Standard"
     capacity = 2
   }
- 
+  }
