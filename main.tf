@@ -48,7 +48,7 @@ resource "azurerm_kubernetes_cluster" "firstclass" {
 
   default_node_pool {
     name       = "${var.prefix}storage${var.env}"
-    node_count = var.numeric
+    node_count = var.1
     vm_size    = var.Standard_D2_v2
   }
 
