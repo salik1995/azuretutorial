@@ -57,7 +57,7 @@ resource "azurerm_kubernetes_cluster" "firstclass" {
   }
 
   tags = {
-    Environment = "Production"
+    Environment = var.dev
   }
 }
 
