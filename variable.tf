@@ -39,9 +39,9 @@ variable "system" {
   default="private"
 }
 
-variable "1" {
+variable "numeric" {
   type=number
-  default="Standard"
+  default=1
 }
 
 variable "Standard_D2_v2" {
