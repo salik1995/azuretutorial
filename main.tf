@@ -163,7 +163,7 @@ resource "azurerm_web_application_firewall_policy" "security" {
     }
   }
 }
-resource "azurerm_virtual_network" "example" {
+resource "azurerm_virtual_network" "trainning" {
   name                = "example-network"
   resource_group_name = azurerm_resource_group.tutorial.name
   location            = azurerm_resource_group.tutorial.location
@@ -173,14 +173,14 @@ resource "azurerm_virtual_network" "example" {
 resource "azurerm_subnet" "frontend" {
   name                 = "frontend"
   resource_group_name  = azurerm_resource_group.tutorial.name
-  virtual_network_name = azurerm_virtual_network.tutorial.name
+  virtual_network_name = azurerm_virtual_network.tutorial.trainning
   address_prefixes     = ["10.254.0.0/24"]
 }
 
 resource "azurerm_subnet" "backend" {
   name                 = "backend"
   resource_group_name  = azurerm_resource_group.tutorial.name
-  virtual_network_name = azurerm_virtual_network.tutorial.name
+  virtual_network_name = azurerm_virtual_network.tutorial.trainning
   address_prefixes     = ["10.254.2.0/24"]
 }
 
