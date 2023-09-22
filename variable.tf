@@ -39,7 +39,7 @@ variable "system" {
   default="private"
 }
 
-variable "number" {
+variable "count" {
   type=number
   default="private"
 }
