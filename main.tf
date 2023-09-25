@@ -208,7 +208,7 @@ resource "azurerm_application_gateway" "network" {
   location            = azurerm_resource_group.tutorial.location
 
   sku {
-    name     = "Standard_Small"
+    name     = "http_listener"
     tier     = "Standard"
     capacity = 2
   }
