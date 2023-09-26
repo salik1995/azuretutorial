@@ -1,3 +1,7 @@
+locals {
+   student_names = ["hashim","thomas","salik"]
+  }
+  
 resource "azurerm_resource_group" "tutorial" {
   name     = "${var.prefix}_resource_group_${var.env}"
   location = "Canada Central"
