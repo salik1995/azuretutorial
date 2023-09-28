@@ -354,18 +354,22 @@ resource "azurerm_data_factory" "firewall" {
   resource_group_name = azurerm_resource_group.tutorial.name
 }
 
-resource "azurerm_data_factory_linked_service_mysql" "waterfall" {
+resource "azurerm_data_factory" "waterfall" {
   name                = "example"
+  location            = azurerm_resource_group.tutorial.location
   resource_group_name = azurerm_resource_group.tutorial.name
-  data_factory_name   = azurerm_data_factory.firewall.name
-  connection_string   = "Server=test;Port=3306;Database=test;User=test;SSLMode=1;UseSystemTrustStore=0;Password=test"
 }
 
-resource "azurerm_data_factory_dataset_mysql" "bubbleball" {
+resource "azurerm_data_factory_linked_service_mysql" "bubblefall" {
+  name              = "example"
+  data_factory_id   = azurerm_data_factory.waterfall.id
+  connection_string = "Server=test;Port=3306;Database=test;User=test;SSLMode=1;UseSystemTrustStore=0;Password=test"
+}
+
+resource "azurerm_data_factory_dataset_mysql" "bubblegum" {
   name                = "example"
-  resource_group_name = azurerm_resource_group.tutorial.name
-  data_factory_name   = azurerm_data_factory.firewall.name
-  linked_service_name = azurerm_data_factory_linked_service_mysql.waterfall.name
+  data_factory_id     = azurerm_data_factory.waterfall.id
+  linked_service_name = azurerm_data_factory_linked_serv
 }
 
 resource "azurerm_public_ip" "public" {
