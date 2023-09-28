@@ -356,7 +356,7 @@ resource "azurerm_data_factory" "java" {
 
 resource "azurerm_data_factory_linked_service_mysql" "mysqlno" {
   name                = "example"
-  resource_group_name = "${azurerm_resource_group.tutorial.name}"
+  resource_group_name = "${azurerm_resource_group.example.name}"
   data_factory_name   = "${azurerm_data_factory.java.name}"
   connection_string   = "Server=test;Port=3306;Database=test;User=test;SSLMode=1;UseSystemTrustStore=0;Password=test"
 }
