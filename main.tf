@@ -368,5 +368,23 @@ resource "azurerm_data_factory_dataset_mysql" "bubbleball" {
   linked_service_name = "${azurerm_data_factory_linked_service_mysql.waterfall.name}"
 }
 
+resource "azurerm_public_ip" "public" {
+  name                = "PublicIPForLB"
+  location            = "Canada Central"
+  resource_group_name = "${azurerm_resource_group.tutorial.name}"
+  allocation_method   = "Static"
+}
+
+resource "azurerm_lb" "private" {
+  name                = "TestLoadBalancer"
+  location            = "Canada Central"
+  resource_group_name = "${azurerm_resource_group.tutorial.name}"
+
+  frontend_ip_configuration {
+    name                 = "PublicIPAddress"
+    public_ip_address_id = "${azurerm_public_ip.public.id}"
+  }
+}
+
   
 
