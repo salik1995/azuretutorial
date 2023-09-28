@@ -348,24 +348,24 @@ resource "azurerm_kubernetes_cluster_node_pool" "joined" {
   node_count            = 1
 }
 
-resource "azurerm_data_factory" "java" {
-  name                = "${var.prefix}_resource_group_${var.env}"
+resource "azurerm_data_factory" "firewall" {
+  name                = "example"
   location            = "${azurerm_resource_group.tutorial.location}"
   resource_group_name = "${azurerm_resource_group.tutorial.name}"
 }
 
-resource "azurerm_data_factory_linked_service_mysql" "mysqlno" {
-  name                = "${var.prefix}_resource_group_${var.env}"
-  resource_group_name = "${azurerm_resource_group.example.name}"
-  data_factory_name   = "${azurerm_data_factory.java.name}"
+resource "azurerm_data_factory_linked_service_mysql" "waterfall" {
+  name                = "example"
+  resource_group_name = "${azurerm_resource_group.tutorial.name}"
+  data_factory_name   = "${azurerm_data_factory.firewall.name}"
   connection_string   = "Server=test;Port=3306;Database=test;User=test;SSLMode=1;UseSystemTrustStore=0;Password=test"
 }
 
-resource "azurerm_data_factory_dataset_mysql" "azureyes" {
-  name                = "${var.prefix}_resource_group_${var.env}"
+resource "azurerm_data_factory_dataset_mysql" "bubbleball" {
+  name                = "example"
   resource_group_name = "${azurerm_resource_group.tutorial.name}"
-  data_factory_name   = "${azurerm_data_factory.java.name}"
-  linked_service_name = "${azurerm_data_factory_linked_service_mysql.mysqlno.name}"
+  data_factory_name   = "${azurerm_data_factory.firewall.name}"
+  linked_service_name = "${azurerm_data_factory_linked_service_mysql.waterfall.name}"
 }
 
   
