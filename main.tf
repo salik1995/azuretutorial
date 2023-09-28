@@ -281,5 +281,15 @@ resource "azurerm_postgresql_database" "deployment" {
   charset             = "UTF8"
   collation           = "English_United States.1252"
 }
+
+resource "azurerm_availability_set" "batcha06" {
+  name                = "acceptanceTestAvailabilitySet1"
+  location            = "${azurerm_resource_group.tutorial.location}"
+  resource_group_name = "${azurerm_resource_group.tutorial.name}"
+
+  tags = {
+    environment = "Production"
+  }
+}
   
 
