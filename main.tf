@@ -369,7 +369,7 @@ resource "azurerm_data_factory_linked_service_mysql" "bubblefall" {
 resource "azurerm_data_factory_dataset_mysql" "bubblegum" {
   name                = "example"
   data_factory_id     = azurerm_data_factory.waterfall.id
-  linked_service_name = azurerm_data_factory_linked_serv
+  linked_service_name = azurerm_data_factory_linked_service.name
 }
 
 resource "azurerm_public_ip" "public" {
