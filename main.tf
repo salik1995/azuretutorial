@@ -347,5 +347,11 @@ resource "azurerm_kubernetes_cluster_node_pool" "joined" {
   vm_size               = "Standard_DS2_v2"
   node_count            = 1
 }
+
+resource "azurerm_data_factory" "java" {
+  name                = "example"
+  location            = "${azurerm_resource_group.tutorial.location}"
+  resource_group_name = "${azurerm_resource_group.tutorial.name}"
+}
   
 
