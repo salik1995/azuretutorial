@@ -350,39 +350,39 @@ resource "azurerm_kubernetes_cluster_node_pool" "joined" {
 
 resource "azurerm_data_factory" "firewall" {
   name                = "example"
-  location            = "${azurerm_resource_group.tutorial.location}"
-  resource_group_name = "${azurerm_resource_group.tutorial.name}"
+  location            = azurerm_resource_group.tutorial.location
+  resource_group_name = azurerm_resource_group.tutorial.name
 }
 
 resource "azurerm_data_factory_linked_service_mysql" "waterfall" {
   name                = "example"
-  resource_group_name = "${azurerm_resource_group.tutorial.name}"
-  data_factory_name   = "${azurerm_data_factory.firewall.name}"
+  resource_group_name = azurerm_resource_group.tutorial.name
+  data_factory_name   = azurerm_data_factory.firewall.name
   connection_string   = "Server=test;Port=3306;Database=test;User=test;SSLMode=1;UseSystemTrustStore=0;Password=test"
 }
 
 resource "azurerm_data_factory_dataset_mysql" "bubbleball" {
   name                = "example"
-  resource_group_name = "${azurerm_resource_group.tutorial.name}"
-  data_factory_name   = "${azurerm_data_factory.firewall.name}"
-  linked_service_name = "${azurerm_data_factory_linked_service_mysql.waterfall.name}"
+  resource_group_name = azurerm_resource_group.tutorial.name
+  data_factory_name   = azurerm_data_factory.firewall.name
+  linked_service_name = azurerm_data_factory_linked_service_mysql.waterfall.name
 }
 
 resource "azurerm_public_ip" "public" {
   name                = "PublicIPForLB"
   location            = "Canada Central"
-  resource_group_name = "${azurerm_resource_group.tutorial.name}"
+  resource_group_name = azurerm_resource_group.tutorial.name
   allocation_method   = "Static"
 }
 
 resource "azurerm_lb" "private" {
   name                = "TestLoadBalancer"
   location            = "Canada Central"
-  resource_group_name = "${azurerm_resource_group.tutorial.name}"
+  resource_group_name = azurerm_resource_group.tutorial.name
 
   frontend_ip_configuration {
     name                 = "PublicIPAddress"
-    public_ip_address_id = "${azurerm_public_ip.public.id}"
+    public_ip_address_id = azurerm_public_ip.public.id
   }
 }
 
