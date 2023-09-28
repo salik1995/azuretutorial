@@ -365,7 +365,7 @@ resource "azurerm_data_factory_dataset_mysql" "azureyes" {
   name                = "example"
   resource_group_name = "${azurerm_resource_group.tutorial.name}"
   data_factory_name   = "${azurerm_data_factory.java.name}"
-  linked_service_name = "${azurerm_data_factory_linked_service_mysql.example.name}"
+  linked_service_name = "${azurerm_data_factory_linked_service_mysql.mysqlno.name}"
 }
 
   
