@@ -284,8 +284,8 @@ resource "azurerm_postgresql_database" "deployment" {
 
 resource "azurerm_availability_set" "batcha06" {
   name                = "acceptanceTestAvailabilitySet1"
-  location            = "${azurerm_resource_group.tutorial.location}"
-  resource_group_name = "${azurerm_resource_group.tutorial.name}"
+  location            = azurerm_resource_group.tutorial.location
+  resource_group_name = azurerm_resource_group.tutorial.name
 
   tags = {
     environment = "Production"
@@ -293,8 +293,8 @@ resource "azurerm_availability_set" "batcha06" {
 }
 resource "azurerm_container_group" "storage" {
   name                = "example-continst"
-  location            = "${azurerm_resource_group.tutorial.location}"
-  resource_group_name = "${azurerm_resource_group.tutorial.name}"
+  location            = azurerm_resource_group.tutorial.location
+  resource_group_name = azurerm_resource_group.tutorial.name
   ip_address_type     = "none"
   dns_name_label      = "aci-label"
   os_type             = "Linux"
