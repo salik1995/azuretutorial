@@ -24,12 +24,12 @@ resource "azurerm_kubernetes_cluster" "mygroup" {
   }
 }
 
-output "client_certificate" {
+output "client_certificate_1" {
   value     = [for cluster in azurerm_kubernetes_cluster.mygroup:cluster.kube_config.0.client_certificate]
   sensitive = true
 }
 
-output "kube_config" {
+output "kube_config_1" {
   value = azurerm_kubernetes_cluster.example.kube_config_raw
 
   sensitive = true
