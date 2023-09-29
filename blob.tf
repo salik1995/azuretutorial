@@ -1,31 +1,25 @@
-resource "azurerm_kubernetes_cluster" "example" {
-  name                = "example-aks1"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
-  dns_prefix          = "exampleaks1"
-
-  default_node_pool {
-    name       = "default"
-    node_count = 1
-    vm_size    = "Standard_D2_v2"
-  }
-
-  identity {
-    type = "SystemAssigned"
-  }
-
-  tags = {
-    Environment = "Production"
-  }
+locals {
+   cars_names=["bmw","toyotta","honda","mazda"]
+}
+resource "azurerm_storage_account" "racing" {
+  name                     = "{$var.prefix}cluster-$(each.key)"
+  resource_group_name      = azurerm_resource_group.tutorial.name
+  location                 = azurerm_resource_group.tutorial.location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
 }
 
-output "client_certificate" {
-  value     = azurerm_kubernetes_cluster.example.kube_config.0.client_certificate
-  sensitive = true
+resource "azurerm_storage_container" "height" {
+  name                  = "content"
+  storage_account_name  = azurerm_storage_account.racing.name
+  container_access_type = "private"
 }
 
-output "kube_config" {
-  value = azurerm_kubernetes_cluster.example.kube_config_raw
-
-  sensitive = true
+resource "azurerm_storage_blob" "fast" {
+  for_each            =  {for cluster in local.cars_names: cars=>cars}
+  name                   = "my-awesome-content.zip"
+  storage_account_name   = azurerm_storage_account.racing.name
+  storage_container_name = azurerm_storage_container.height.name
+  type                   = "Block"
+  source                 = "some-local-file.zip"
 }
