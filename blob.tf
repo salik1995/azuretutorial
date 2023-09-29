@@ -2,7 +2,7 @@ locals {
    cars_names=["bmw","toyotta","honda","mazda"]
 }
 resource "azurerm_storage_account" "racing" {
-  name                     = "{$var.prefix}cluster-$(each.key)"
+  name                     = "${var.prefix}cluster-$(each.key)"
   resource_group_name      = azurerm_resource_group.tutorial.name
   location                 = azurerm_resource_group.tutorial.location
   account_tier             = "Standard"
