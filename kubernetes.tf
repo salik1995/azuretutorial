@@ -30,7 +30,7 @@ output "client_certificate_1" {
 }
 
 output "kube_config_1" {
-  value = azurerm_kubernetes_cluster.mygroup.kube_config_raw
+  value = [for cluster in azurerm_kubernetes_cluster.mygroup:cluster.kube_config.0.client_certificate]
 
   sensitive = true
 }
