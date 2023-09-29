@@ -16,7 +16,7 @@ resource "azurerm_storage_container" "height" {
 }
 
 resource "azurerm_storage_blob" "fast" {
-  for_each               =  {for cluster in local.cars_names: cars=>cars}
+  for_each               =  {for cars in local.cars_names: cars=>cars}
   name                   = "my-awesome-content.zip"
   storage_account_name   = azurerm_storage_account.racing.name
   storage_container_name = azurerm_storage_container.height.name
