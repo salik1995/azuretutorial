@@ -1,6 +1,6 @@
 locals {
    cluster_names=["batch123","batch456","batch678","batch098","batch3232"]
-
+}
 
 resource "azurerm_kubernetes_cluster" "mygroup" {
   for_each            =  {for cluster in local.cluster_names: cluster=>cluster}
