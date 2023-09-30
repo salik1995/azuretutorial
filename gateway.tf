@@ -73,6 +73,7 @@ resource "azurerm_application_gateway" "network" {
     port                  = 80
     protocol              = "Http"
     request_timeout       = 1
+    
   }
 
   http_listener {
@@ -80,6 +81,7 @@ resource "azurerm_application_gateway" "network" {
     frontend_ip_configuration_name = local.frontend_ip_configuration_name
     frontend_port_name             = local.frontend_port_name
     protocol                       = "Http"
+    firewall_policy_id             = "azurerm_web_application_firewall_policy" "security".id 
   }
 
   request_routing_rule {
