@@ -29,7 +29,7 @@ resource "azurerm_network_interface" "main" {
 
 resource "azurerm_virtual_machine" "main" {
   for_each              =  {for virtual in local.virtual_names: virtual=>virtual}
-  name                  = "${var.prefix}-virtual-$(each.key)"
+  name                  = "${var.prefix}virtual-$(each.key)"
   location              = azurerm_resource_group.tutorial.location
   resource_group_name   = azurerm_resource_group.tutorial.name
   network_interface_ids = [azurerm_network_interface.main.id]
