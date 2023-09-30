@@ -1,5 +1,5 @@
 locals {
-   virtual_names=["azure","AWS","GCP","Mirco""Mircotech"]
+   virtual_names=["azure","AWS","GCP","Mirco","Mircotech"]
 }
 resource "azurerm_virtual_network" "main" {
   name                = "${var.prefix}-network"
