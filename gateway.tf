@@ -3,7 +3,7 @@ resource "azurerm_virtual_network" "trainning" {
   resource_group_name = azurerm_resource_group.tutorial.name
   location            = azurerm_resource_group.tutorial.location
   address_space       = ["10.254.0.0/16"]
-}
+
 
 resource "azurerm_subnet" "frontend" {
   name                 = "frontend"
