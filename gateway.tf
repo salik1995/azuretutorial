@@ -41,6 +41,21 @@ resource "azurerm_application_gateway" "network" {
   name                = "example-appgateway"
   resource_group_name = azurerm_resource_group.tutorial.name
   location            = azurerm_resource_group.tutorial.location
+  firewall_policy_id  = azurerm_web_application_firewall_policy.security.id 
+
+ waf_configuration{
+  enabled                   = true
+  firewall_mode             = Detection
+  rule_set_type             = Microsoft_BotManagerRuleSet
+  rule_set_version          = 3.2
+  disabled_rule_group       = disabled_rule_group
+  file_upload_limit_mb      = 100
+  request_body_check        = true
+  max_request_body_size_kb  = 128
+  exclusion                 = exclusion
+
+    
+  }
 
    sku {
     name     = "Standard_Small"
@@ -81,7 +96,7 @@ resource "azurerm_application_gateway" "network" {
     frontend_ip_configuration_name = local.frontend_ip_configuration_name
     frontend_port_name             = local.frontend_port_name
     protocol                       = "Http"
-    firewall_policy_id             = "azurerm_web_application_firewall_policy" "security".id 
+    firewall_policy_id             = azurerm_web_application_firewall_policy.security.id 
   }
 
   request_routing_rule {
