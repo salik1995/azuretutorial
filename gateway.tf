@@ -43,19 +43,27 @@ resource "azurerm_application_gateway" "network" {
   location            = azurerm_resource_group.tutorial.location
   firewall_policy_id  = azurerm_web_application_firewall_policy.security.id 
 
- waf_configuration{
+ waf_configuration {
   enabled                   = true
-  firewall_mode             = Detection
-  rule_set_type             = Microsoft_BotManagerRuleSet
+  firewall_mode             = "Detection"
+  rule_set_type             = "Microsoft_BotManagerRuleSet"
   rule_set_version          = 3.2
-  disabled_rule_group       = disabled_rule_group
+  disabled_rule_group       = "disabled_rule_group"
   file_upload_limit_mb      = 100
   request_body_check        = true
   max_request_body_size_kb  = 128
-  exclusion                 = exclusion
-
-    
-  }
+ 
+    exclusion {
+    match_variable          = "RequestArgKeys"
+    selector_match_operator = "Contains"
+    selector                = "match_variable"
+  }               
+   
+   
+  disabled_rule_group {
+  rule_group_name           = "BadBots"
+  rules                     = "rules"
+   }
 
    sku {
     name     = "Standard_Small"
