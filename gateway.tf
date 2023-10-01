@@ -3,7 +3,7 @@ resource "azurerm_virtual_network" "trainning" {
   resource_group_name = azurerm_resource_group.tutorial.name
   location            = azurerm_resource_group.tutorial.location
   address_space       = ["10.254.0.0/16"]
-
+}
 
 resource "azurerm_subnet" "frontend" {
   name                 = "frontend"
@@ -42,7 +42,7 @@ resource "azurerm_application_gateway" "network" {
   resource_group_name = azurerm_resource_group.tutorial.name
   location            = azurerm_resource_group.tutorial.location
   firewall_policy_id  = azurerm_web_application_firewall_policy.security.id 
-  }
+  
 
  waf_configuration {
   enabled                   = true
@@ -65,7 +65,7 @@ resource "azurerm_application_gateway" "network" {
   rule_group_name           = "BadBots"
   rules                     = "rules"
    }
-
+}
    sku {
     name     = "Standard_Small"
     tier     = "Standard"
