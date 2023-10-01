@@ -65,7 +65,6 @@ resource "azurerm_application_gateway" "network" {
   rule_group_name           = "BadBots"
   rules                     = "rules"
    }
-   } 
 
    sku {
     name     = "Standard_Small"
