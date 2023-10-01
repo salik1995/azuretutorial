@@ -62,7 +62,7 @@ resource "azurerm_application_gateway" "network" {
    
    
   disabled_rule_group {
-  rule_group_name           = "BadBots"
+  rule_group_name           = "crs_20_protocol_violations"
   rules                     = "rules"
    }
 }
