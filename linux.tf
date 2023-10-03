@@ -3,7 +3,7 @@ locals {
 }
 resource "azurerm_service_plan" "icecream" {
   for_each            =  {for linux in local.linux_names: linux=>linux}
-  name                = "{$var.prefix}-$(each.key)"
+  name                = "{$var.prefix}linux-$(each.key)"
   resource_group_name = azurerm_resource_group.tutorial.name
   location            = azurerm_resource_group.tutorial.location
   os_type             = "Linux"
