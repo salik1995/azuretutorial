@@ -11,6 +11,7 @@ resource "azurerm_service_plan" "icecream" {
 }
 
 resource "azurerm_linux_web_app" "pops" {
+  for_each            =  {for linux in local.linux_names: linux=>linux}
   name                = "example"
   resource_group_name = azurerm_resource_group.tutorial.name
   location            = azurerm_service_plan.icecream["linuxabc"].location
