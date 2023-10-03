@@ -1,5 +1,6 @@
 locals {
    windows_names=["w1","w2","w3","w4","w5"]
+}
 
 resource "azurerm_service_plan" "deploying" {
   for_each            =  {for windows in local.windows_names: windows=>windows}
