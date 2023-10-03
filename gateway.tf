@@ -59,13 +59,7 @@ resource "azurerm_application_gateway" "network" {
     selector_match_operator = "Contains"
     selector                = "match_variable"
   }               
-   
-   
-  disabled_rule_group {
-  rule_group_name           = "crs_20_protocol_violations"
-  rules                     = "disabled"
-   }
-}
+
    sku {
     name     = "Standard_Small"
     tier     = "Standard"
