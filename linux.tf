@@ -13,8 +13,8 @@ resource "azurerm_service_plan" "icecream" {
 resource "azurerm_linux_web_app" "pops" {
   name                = "example"
   resource_group_name = azurerm_resource_group.tutorial.name
-  location            = azurerm_service_plan.icecream[each.key].location
-  service_plan_id     = azurerm_service_plan.icecream[each.key].id
+  location            = azurerm_service_plan.icecream.location
+  service_plan_id     = azurerm_service_plan.icecream.id
 
   site_config {}
 }
