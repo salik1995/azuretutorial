@@ -42,7 +42,7 @@ resource "azurerm_application_gateway" "network" {
   resource_group_name = azurerm_resource_group.tutorial.name
   location            = azurerm_resource_group.tutorial.location
   firewall_policy_id  = azurerm_web_application_firewall_policy.security.id 
-  
+  }
 
  waf_configuration {
   enabled                   = true
