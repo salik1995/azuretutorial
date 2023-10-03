@@ -58,7 +58,8 @@ resource "azurerm_application_gateway" "network" {
     match_variable          = "RequestArgKeys"
     selector_match_operator = "Contains"
     selector                = "match_variable"
-  }               
+  } 
+  } 
 
    sku {
     name     = "Standard_Small"
