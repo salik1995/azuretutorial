@@ -11,7 +11,7 @@ resource "azurerm_service_plan" "sim" {
 }
 
 resource "azurerm_windows_web_app" "data" {
-  or_each            =  {for wwindow in local.wwindow_names: window=>window}
+  for_each            =  {for wwindow in local.wwindow_names: window=>window}
   name                = "example-windows-web-app"
   resource_group_name = azurerm_resource_group.tutorial.name
   location            = azurerm_service_plan.sim["wowabc"].location
