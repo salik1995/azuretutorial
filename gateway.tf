@@ -49,7 +49,6 @@ resource "azurerm_application_gateway" "network" {
   firewall_mode             = "Detection"
   rule_set_type             = "Microsoft_BotManagerRuleSet"
   rule_set_version          = 3.2
-  disabled_rule_group       = "disabled_rule_group"
   file_upload_limit_mb      = 100
   request_body_check        = true
   max_request_body_size_kb  = 128
