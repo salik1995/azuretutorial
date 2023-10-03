@@ -14,8 +14,8 @@ resource "azurerm_linux_web_app" "ran" {
   for_each            =  {for appslot in local.appslot_names: appslot=>appslot}
   name                = "example-linux-web-app"
   resource_group_name = azurerm_resource_group.tutorial.name
-  location            = azurerm_service_plan.ran["appxabc"].location
-  service_plan_id     = azurerm_service_plan.ran["appxabc"].id
+  location            = azurerm_service_plan.website["appxabc"].location
+  service_plan_id     = azurerm_service_plan.website["appxabc"].id
 
   site_config {}
 }
