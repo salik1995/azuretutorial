@@ -2,7 +2,7 @@ locals {
    wwindow_names=["wowxabc","wowcdb","wowbvc","wow098","wow3232"]
 }
 resource "azurerm_service_plan" "sim" {
-  or_each            =  {for wwindow in local.wwindow_names: window=>window}
+  or_each            =  {for wwindow in local.wwindow_names: wwindow=>wwindow}
   name                = each.key
   resource_group_name = azurerm_resource_group.tutorial.name
   location            = azurerm_resource_group.tutorial.location
