@@ -22,7 +22,7 @@ resource "azurerm_linux_web_app" "ran" {
 
 resource "azurerm_linux_web_app_slot" "netwo" {
   name           = "example-slot"
-  app_service_id = azurerm_linux_web_app.website.id
+  app_service_id = azurerm_linux_web_app.ran.id
 
   site_config {}
 }
