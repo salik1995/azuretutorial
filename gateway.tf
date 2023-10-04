@@ -42,7 +42,7 @@ locals {
 }
 
 resource "azurerm_application_gateway" "network" {
-  for_each            =  {for linux in local.gateway_policy: gateway=>gateway}
+  for_each            =  {for gateway in local.gateway_policy: gateway=>gateway}
   name                = "example-appgateway"
   resource_group_name = azurerm_resource_group.tutorial.name
   location            = azurerm_resource_group.tutorial.location
