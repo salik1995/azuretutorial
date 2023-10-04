@@ -1,3 +1,7 @@
+locals {
+   gateway_policy=["gateway1","gateway2","gateway3","gateway4","gateway5"]
+}
+
 resource "azurerm_virtual_network" "trainning" {
   name                = "example-network"
   resource_group_name = azurerm_resource_group.tutorial.name
@@ -38,6 +42,7 @@ locals {
 }
 
 resource "azurerm_application_gateway" "network" {
+  for_each            =  {for linux in local.gateway_policy: gateway=>gateway}
   name                = "example-appgateway"
   resource_group_name = azurerm_resource_group.tutorial.name
   location            = azurerm_resource_group.tutorial.location
