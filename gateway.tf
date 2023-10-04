@@ -98,12 +98,11 @@ resource "azurerm_application_gateway" "network" {
   }
 
   http_listener {
-    for_each                       = azurerm_web_application_firewall_policy.security
     name                           = local.listener_name
     frontend_ip_configuration_name = local.frontend_ip_configuration_name
     frontend_port_name             = local.frontend_port_name
     protocol                       = "Http"
-    firewall_policy_id             = each.value.id 
+    firewall_policy_id             = each.key
   }
 
   request_routing_rule {
