@@ -22,7 +22,7 @@ resource "azurerm_linux_web_app" "ran" {
 
 resource "azurerm_linux_web_app_slot" "netwo" {
   name           = "${var.prefix}appslot${var.env}"
-  app_service_id = aeach.value.id
+  app_service_id = each.value.id
 
   site_config {}
 }
