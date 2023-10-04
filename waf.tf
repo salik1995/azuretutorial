@@ -4,7 +4,7 @@ locals {
 
 resource "azurerm_web_application_firewall_policy" "security" {
   for_each            =  {for gateway in local.gateway_policy: gateway=>gateway}
-  name                = "${var.prefix}storage${var.env}"
+  name                = "${var.prefix}gateway${var.env}"
   resource_group_name = azurerm_resource_group.tutorial.name
   location            = azurerm_resource_group.tutorial.location
 
