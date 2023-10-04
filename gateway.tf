@@ -44,7 +44,7 @@ resource "azurerm_application_gateway" "network" {
   name                = "${each.key}"
   resource_group_name = azurerm_resource_group.tutorial.name
   location            = azurerm_resource_group.tutorial.location
-  firewall_policy_id  = each.value.id 
+  firewall_policy_id  = each.key
   
 
  waf_configuration {
