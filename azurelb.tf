@@ -15,3 +15,7 @@ resource "azurerm_lb" "designed" {
     public_ip_address_id = azurerm_public_ip.addressed.id
   }
 }
+resource "azurerm_lb_backend_address_pool" "tested" {
+  loadbalancer_id = azurerm_lb.designed.id
+  name            = "BackEndAddressPool"
+}
