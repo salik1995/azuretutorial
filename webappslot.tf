@@ -12,7 +12,7 @@ resource "azurerm_service_plan" "website" {
 
 resource "azurerm_linux_web_app" "ran" {
   for_each            =  {for appslot in local.appslot_names: appslot=>appslot}
-  name                = "example-linux-web-app"
+  name                = "${var.prefix}appslot${var.env}"
   resource_group_name = azurerm_resource_group.tutorial.name
   location            = azurerm_service_plan.website["appxabc"].location
   service_plan_id     = azurerm_service_plan.website["appxabc"].id
@@ -20,9 +20,9 @@ resource "azurerm_linux_web_app" "ran" {
   site_config {}
 }
 
-resource "azurerm_linux_web_app_slot" "netwo" {
-  name           = "${var.prefix}appslot${var.env}"
-  app_service_id = each.value.id
+resource "azurerm_linux_web_app_slot" "signal" {
+  name           = "example-slot"
+  app_service_id = azurerm_linux_web_app.ran["appxabc"].id
 
   site_config {}
 }
