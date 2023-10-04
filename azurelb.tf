@@ -24,3 +24,11 @@ resource "azurerm_lb_probe" "noted" {
   name            = "ssh-running-probe"
   port            = 22
 }
+resource "azurerm_lb_rule" "strong" {
+  loadbalancer_id                = azurerm_lb.designed.id
+  name                           = "LBRule"
+  protocol                       = "Tcp"
+  frontend_port                  = 3389
+  backend_port                   = 3389
+  frontend_ip_configuration_name = "PublicIPAddress"
+}
