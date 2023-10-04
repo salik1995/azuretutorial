@@ -1,6 +1,4 @@
-locals {
-   gateway_policy=["gateway1","gateway2","gateway3","gateway4","gateway5"]
-}
+
 
 resource "azurerm_virtual_network" "trainning" {
   name                = "example-network"
