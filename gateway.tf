@@ -42,10 +42,11 @@ locals {
 }
 
 resource "azurerm_application_gateway" "network" {
-  name                = "example-appgateway"
+  for_each            = azurerm_web_application_firewall_policy.security
+  name                = "${each.key}"
   resource_group_name = azurerm_resource_group.tutorial.name
   location            = azurerm_resource_group.tutorial.location
-  firewall_policy_id  = azurerm_web_application_firewall_policy.security.id 
+  firewall_policy_id  = each.value.id 
   
 
  waf_configuration {
@@ -103,7 +104,7 @@ resource "azurerm_application_gateway" "network" {
     frontend_ip_configuration_name = local.frontend_ip_configuration_name
     frontend_port_name             = local.frontend_port_name
     protocol                       = "Http"
-    firewall_policy_id             = azurerm_web_application_firewall_policy.security.id 
+    firewall_policy_id             = each.value.id 
   }
 
   request_routing_rule {
