@@ -19,3 +19,8 @@ resource "azurerm_lb_backend_address_pool" "tested" {
   loadbalancer_id = azurerm_lb.designed.id
   name            = "BackEndAddressPool"
 }
+resource "azurerm_lb_probe" "noted" {
+  loadbalancer_id = azurerm_lb.example.id
+  name            = "ssh-running-probe"
+  port            = 22
+}
