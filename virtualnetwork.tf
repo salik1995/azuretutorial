@@ -23,7 +23,7 @@ resource "azurerm_virtual_network" "side" {
   subnet {
     name           = "subnet2"
     address_prefix = "10.0.2.0/24"
-    security_group = azurerm_network_security_group.side.id
+    security_group = azurerm_network_security_group.threat.id
   }
 
   tags = {
