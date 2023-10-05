@@ -7,7 +7,7 @@ resource "azurerm_network_security_group" "threat" {
   resource_group_name = azurerm_resource_group.tutorial.name
 }
 
-resource "azurerm_virtual_network" "main" {
+resource "azurerm_virtual_network" "side" {
   for_each              =  {for virtuall in local.virtuall_network: virtuall=>virtuall}
   name                = "example-network"
   location            = azurerm_resource_group.tutorial.location
@@ -23,7 +23,7 @@ resource "azurerm_virtual_network" "main" {
   subnet {
     name           = "subnet2"
     address_prefix = "10.0.2.0/24"
-    security_group = azurerm_network_security_group.example.id
+    security_group = azurerm_network_security_group.side.id
   }
 
   tags = {
