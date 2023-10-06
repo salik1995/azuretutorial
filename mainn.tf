@@ -33,7 +33,7 @@ resource "azurerm_linux_web_app" "batcha06webapp" {
 }
 
 resource "azurerm_service_plan" "casting" {
-  for_each            ={for app in local.linux_app_list: "${app.name}"=>sp }
+  for_each            ={for app in local.linux_app_list: "${app.name}"=>app }
   name                = each.value.name
   resource_group_name = azurerm_resource_group.tutorial.name
   location            = azurerm_resource_group.tutorial.location
