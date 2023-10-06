@@ -42,6 +42,7 @@ resource "azurerm_service_plan" "casting" {
 }
 
 resource "azurerm_windows_web_app" "diet" {
+  for_each            = azurerm_service_plan.batcha06sp
   name                = "{$var.prefix}cluster-$(each.key)"
   resource_group_name = azurerm_resource_group.tutorial.name
   location            = azurerm_service_plan.casting.location
