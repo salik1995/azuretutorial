@@ -31,3 +31,21 @@ resource "azurerm_linux_web_app" "batcha06webapp" {
 
   site_config {}
 }
+
+resource "azurerm_service_plan" "casting" {
+  for_each            ={for app in local.linux_app_list: "${app.name}"=>sp }
+  name                = each.value.name
+  resource_group_name = azurerm_resource_group.tutorial.name
+  location            = azurerm_resource_group.tutorial.location
+  sku_name            = "P1v2"
+  os_type             = "Windows"
+}
+
+resource "azurerm_windows_web_app" "diet" {
+  name                = "{$var.prefix}cluster-$(each.key)"
+  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_service_plan.casting.location
+  service_plan_id     = azurerm_service_plan.casting.id
+
+  site_config {}
+}
