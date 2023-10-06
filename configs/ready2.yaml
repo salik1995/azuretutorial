@@ -1,10 +1,10 @@
 listofwindowsapp:
-  - name: firstwindowapp    
+  - name: firstwindowsapp    
     os_type: window
     sku_name: P1v2
-  - name: secondwindowapp    
+  - name: secondwindowsapp    
     os_type: window
     sku_name: P1v2
-  - name: thirdwindowapp    
+  - name: thirdwindowsapp    
     os_type: window
     sku_name: P1v2
