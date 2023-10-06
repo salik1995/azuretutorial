@@ -1,4 +1,4 @@
-listofwindowapp:
+listofwindowsapp:
   - name: firstwindowapp    
     os_type: window
     sku_name: P1v2
