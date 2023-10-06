@@ -37,8 +37,8 @@ resource "azurerm_service_plan" "casting" {
   name                = each.value.name
   resource_group_name = azurerm_resource_group.tutorial.name
   location            = azurerm_resource_group.tutorial.location
-  sku_name            = P1v2
-  os_type             = Windows
+  sku_name            = each.value.sku_name
+  os_type             = each.value.os_type
 }
 
 resource "azurerm_windows_web_app" "diet" {
