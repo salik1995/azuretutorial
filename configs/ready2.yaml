@@ -1,0 +1,10 @@
+listofwindowapp:
+  - name: firstwindowapp    
+    os_type: window
+    sku_name: P1v2
+  - name: secondwindowapp    
+    os_type: window
+    sku_name: P1v2
+  - name: thirdwindowapp    
+    os_type: window
+    sku_name: P1v2
