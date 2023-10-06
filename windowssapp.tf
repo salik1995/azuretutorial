@@ -10,7 +10,8 @@ locals{
     ]
 ])
 
-}resource "azurerm_service_plan" "netwrokz" {
+}
+resource "azurerm_service_plan" "netwrokz" {
   for_each            ={for app in local.linux_app_list: "${app.name}"=>app }
   name                = each.value.name
   resource_group_name = azurerm_resource_group.tutorial.name
