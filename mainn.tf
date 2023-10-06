@@ -45,8 +45,8 @@ resource "azurerm_windows_web_app" "diet" {
   for_each            = azurerm_service_plan.casting
   name                = "{$var.prefix}-$(each.key)"
   resource_group_name = azurerm_resource_group.tutorial.name
-  location            = azurerm_service_plan.casting.location
-  service_plan_id     = azurerm_service_plan.casting.id
+  location            = azurerm_service_plan.casting[each.key].location
+  service_plan_id     = azurerm_service_plan.casting[each.key].id
 
   site_config {}
 }
