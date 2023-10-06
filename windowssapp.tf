@@ -21,7 +21,7 @@ resource "azurerm_service_plan" "netwrokz" {
 }
 
 resource "azurerm_windows_web_app" "storagez" {
-  for_each            = azurerm_service_plan.casting
+  for_each            = azurerm_service_plan.netwrokz
   name                = each.value.name
   resource_group_name = azurerm_resource_group.tutorial.name
   location            = azurerm_service_plan.casting[each.key].location
