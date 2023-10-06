@@ -1,4 +1,16 @@
-resource "azurerm_service_plan" "casting" {
+locals{
+  linux_app=[for f in fileset("${path.module}/configs", "[^_]*.yaml") : yamldecode(file("${path.module}/configs/${f}"))]
+  linux_app_list = flatten([
+    for app in local.linux_app : [
+      for windowsapps in try(app.listofwindowsapp, []) :{
+        name=windowsapps.name
+        os_type=windowsapps.os_type
+        sku_name=windowsapps.sku_name     
+      }
+    ]
+])
+
+}resource "azurerm_service_plan" "netwrokz" {
   for_each            ={for app in local.linux_app_list: "${app.name}"=>app }
   name                = each.value.name
   resource_group_name = azurerm_resource_group.tutorial.name
@@ -7,7 +19,7 @@ resource "azurerm_service_plan" "casting" {
   os_type             = each.value.os_type
 }
 
-resource "azurerm_windows_web_app" "diet" {
+resource "azurerm_windows_web_app" "storagez" {
   for_each            = azurerm_service_plan.casting
   name                = each.value.name
   resource_group_name = azurerm_resource_group.tutorial.name
