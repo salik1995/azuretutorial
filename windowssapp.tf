@@ -1,7 +1,7 @@
 locals{
-  linux_app=[for f in fileset("${path.module}/configs", "[^_]*.yaml") : yamldecode(file("${path.module}/configs/${f}"))]
-  linux_app_list = flatten([
-    for app in local.linux_app : [
+  windows_app=[for f in fileset("${path.module}/configs", "[^_]*.yaml") : yamldecode(file("${path.module}/configs/${f}"))]
+  windows_app_list = flatten([
+    for app in local.windows_app : [
       for windowsapps in try(app.listofwindowsapp, []) :{
         name=windowsapps.name
         os_type=windowsapps.os_type
