@@ -16,8 +16,8 @@ resource "azurerm_service_plan" "netwrokz" {
   name                = each.value.name
   resource_group_name = azurerm_resource_group.tutorial.name
   location            = azurerm_resource_group.tutorial.location
-  os_type             = windowsapps.os_type
-  sku_name            = windowsapps.sku_name
+  os_type             = each.value.os_type
+  sku_name            = each.value.sku_name
 }
 
 resource "azurerm_windows_web_app" "storagez" {
