@@ -1,4 +1,4 @@
 listofwindowsapp:
   - name: firstwindowsapp    
-    os_type: window
+    os_type: Windows
     sku_name: P1v2
