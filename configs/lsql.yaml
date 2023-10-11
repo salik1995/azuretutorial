@@ -14,5 +14,5 @@ listofwindowsapp:
     sku_name: P1v2
 
 listofsql_server:
- - name:                          = "sqlserver"
-   version:                       = "12.0"
+ - name: sqlserver
+   version: "12.0"
