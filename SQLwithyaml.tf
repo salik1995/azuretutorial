@@ -1,17 +1,18 @@
 locals{
-  linux_app=[for f in fileset("${path.module}/configs", "[^_]*.yaml") : yamldecode(file("${path.module}/configs/${f}"))]
-  linux_app_list = flatten([
-    for app in local.linux_app : [
-      for linuxapps in try(app.listoflinuxapp, []) :{
-        name=linuxapps.name
-        os_type=linuxapps.os_type
-        sku_name=linuxapps.sku_name 
+  sql_server=[for f in fileset("${path.module}/configs", "[^_]*.yaml") : yamldecode(file("${path.module}/configs/${f}"))]
+  sql_server_list = system([
+    for app in local.sql_server : [
+      for linuxapps in try(app.listofsqlserver, []) :{
+        name=sqlserver.name
+        os_type=sqlserver.os_type
+        sku_name=sqlserver.sku_name 
       }
     ]
 ])
 }
 
 resource "azurerm_sql_server" "networking" {
+  for_each                     ={for sp in local.sql_server_list: "${sp.name}"=>sp }
   name                         = "sqlserver"
   resource_group_name          = azurerm_resource_group.tutorial.name
   location                     = azurerm_resource_group.tutorial.location
