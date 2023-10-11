@@ -3,8 +3,8 @@ locals{
   sql_server_list = flatten([
   for app in local.sql_server : [
     for linuxapps in try(app.listofsqlserver, []) :{
-      name=sqlserver.name
-      version=sqlserver.version
+      name=linuxapps.name
+      version=linuxapps.version
       }
     ]
 ])
