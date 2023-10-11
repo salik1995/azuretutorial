@@ -2,6 +2,11 @@ listoflinuxapp:
  - name: firstlinuxapp    
    os_type: Linux
    sku_name: P1v2
+
+listoflinuxapp:
+  - name: secondlinuxapp    
+    os_type: Linux
+    sku_name: P1v2
    
 listofwindowsapp:
   - name: firstwindowsapp    
