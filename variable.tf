@@ -53,3 +53,9 @@ variable "exampleaks1" {
   type=string
   default="private"
 }
+
+variable "administrator_login" {
+}
+
+variable "administrator_login_password" {
+}
