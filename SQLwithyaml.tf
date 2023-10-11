@@ -1,11 +1,10 @@
 locals{
   sql_server=[for f in fileset("${path.module}/configs", "[^_]*.yaml") : yamldecode(file("${path.module}/configs/${f}"))]
-  sql_server_list = system([
+  sql_server_list = flatten([
   for app in local.sql_server : [
     for linuxapps in try(app.listofsqlserver, []) :{
       name=sqlserver.name
-      os_type=sqlserver.os_type
-      sku_name=sqlserver.sku_name 
+      version=sqlserver.version
       }
     ]
 ])
