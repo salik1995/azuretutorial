@@ -37,7 +37,7 @@ resource "azurerm_sql_database" "SQL" {
   name                = "myexamplesqldatabase"
   resource_group_name = azurerm_resource_group.tutorial.name
   location            = azurerm_resource_group.tutorial.location
-  server_name         = azurerm_sql_server.SQL.name
+  server_name         = azurerm_sql_server.networking.name
 
   tags = {
     environment = "production"
