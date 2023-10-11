@@ -1,4 +1,8 @@
-
+listoflinuxapp:
+ - name: firstlinuxapp    
+   os_type: Linux
+   sku_name: P1v2
+   
 listofwindowsapp:
   - name: firstwindowsapp    
     os_type: Windows
