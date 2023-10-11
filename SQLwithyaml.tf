@@ -12,7 +12,7 @@ locals{
 }
 
 resource "azurerm_sql_server" "networking" {
-  name                         = "myexamplesqlserver"
+  name                         = "sqlserver"
   resource_group_name          = azurerm_resource_group.tutorial.name
   location                     = azurerm_resource_group.tutorial.location
   version                      = "12.0"
